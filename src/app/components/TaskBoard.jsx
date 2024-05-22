@@ -63,10 +63,10 @@ const TaskBoard = () => {
   // function for handleSearch
   const handleSearch = (searchTerm) => {
     console.log(searchTerm);
-    const filtared = tasks.filter((task) =>
-      task.title.toLowerCase.includes(searchTerm.toLowerCase)
+    const filtered = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setTasks([...filtared]);
+    setTasks([...filtered]);
   };
   // close modal function
   const onCloseClick = () => {
