@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { FaStar } from "react-icons/fa";
 
-const TaskList = ({ tasks, onEdit }) => {
+const TaskList = ({ tasks, onEdit, onDelete, onFav}) => {
     return (
         <div className="overflow-auto">
             <table className="table-fixed overflow-auto xl:w-full">
@@ -21,7 +21,9 @@ const TaskList = ({ tasks, onEdit }) => {
                             return (
                                 <tr key={task.id} className="border-b border-[#dfdfdf] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
                                     <td>
-                                        {task.isFavorit ? (<FaStar color="green" />) : (<FaStar color="gray" />)}
+                                        <button onClick={()=>onFav(task.id)}>
+                                            {task.isFavorit ? (<FaStar color="green" />) : (<FaStar color="gray" />)}
+                                        </button>
                                     </td>
                                     <td>{task?.title}</td>
                                     <td>
@@ -48,7 +50,7 @@ const TaskList = ({ tasks, onEdit }) => {
                                     <td className="text-center"> {task.priority} </td>
                                     <td>
                                         <div className="flex items-center justify-center space-x-3">
-                                            <button className="bg-red-500 text-white px-1">Delete</button>
+                                            <button onClick={()=>onDelete(task.id)} className="bg-red-500 text-white px-1">Delete</button>
                                             <button onClick={()=>onEdit(task)} className="text-blue-500">Edit</button>
                                         </div>
                                     </td>
